@@ -1,11 +1,13 @@
+'use client'
 import { useContext } from "react"
 import PriceRangeDropdown from "./PriceRangeDropdown"
 import PropertyDropdown from "./PropertyDropdown"
 import StateDropdown from "./StateDropdown"
-import { HouseContext } from "./HouseContext"
+
 
 const Search = () => {
-  const {houses} = useContext(HouseContext)
+
+
   return (
     <section>
       <div className=" px-[30px] py-6 max-w-[1170px] mx-auto flex flex-col lg:flex-row

@@ -1,44 +1,74 @@
-'use client';
+'use client'
+import React, { useState, useEffect, createContext } from "react"
+import { housesData } from "@/constants"
 
-import React, { useState, createContext, Dispatch, SetStateAction, ReactNode } from "react";
-import { housesData } from "@/constants";
-
-type HouseContextType = {
+type HouseContextType ={
     houses: typeof housesData;
-    state: string;
-    setState: Dispatch<SetStateAction<string>>;
-    states: string[];
-    setStates: Dispatch<SetStateAction<string[]>>;
+    nigState: string;
+    setNigState: React.Dispatch<React.SetStateAction<string>>;
+    nigStates: string[];
+    setNigStates: React.Dispatch<React.SetStateAction<string[]>>;
     property: string;
-    setProperty: Dispatch<SetStateAction<string>>;
+    setProperty: React.Dispatch<React.SetStateAction<string>>;
     properties: string[];
-    setProperties: Dispatch<SetStateAction<string[]>>;
+    setProperties: React.Dispatch<React.SetStateAction<string[]>>
     price: string;
-    setPrice: Dispatch<SetStateAction<string>>;
-    loading: boolean;
-    setLoading: Dispatch<SetStateAction<boolean>>;
-};
+    setPrice: React.Dispatch<React.SetStateAction<string>>;
+    loading: boolean
+}
+
+const defaultValue: HouseContextType={
+    houses:  housesData,
+    nigState: '',
+    setNigState: () => undefined,
+    nigStates: [],
+    setNigStates: () => undefined ,
+    property: '',
+    setProperty: () => undefined,
+    properties: [],
+    setProperties: () => undefined,
+    price: '',
+    setPrice: () => undefined,
+    loading: false
+}
+
+
+export const HouseContext = createContext<HouseContextType | typeof defaultValue>(defaultValue);
 
 type HouseProps = {
-    children: ReactNode;
-};
+    children: React.ReactNode;
+}
 
-export const HouseContext = createContext<HouseContextType | undefined>(undefined);
 
-const HouseContextProvider: React.FC<HouseProps> = ({ children }) => {
-    const [houses, setHouse] = useState(housesData);
-    const [state, setState] = useState('Location (any)');
-    const [states, setStates] = useState<string[]>([]);
+
+const HouseContextProvider = ({children}: HouseProps) => {
+    const [houses, setHouses] = useState(housesData);
+    const [nigState, setNigState] = useState('Location (any)');
+    const [nigStates, setNigStates] = useState<string[]>([]);
     const [property, setProperty] = useState('Property type (any)');
     const [properties, setProperties] = useState<string[]>([]);
     const [price, setPrice] = useState('Price range (any)');
     const [loading, setLoading] = useState(false);
+  return (
+    <HouseContext.Provider value={{
+        nigState,
+        setNigState,
+        nigStates,
+        setNigStates,
+        property,
+        setProperty,
+        properties,
+        setProperties,
+        price,
+        setPrice,
+        houses,
+        loading,
+        
 
-    return (
-        <HouseContext.Provider value={{ houses, state, setState, states, setStates, property, setProperty, properties, setProperties, price, setPrice, loading, setLoading }}>
-            {children}
-        </HouseContext.Provider>
-    );
-};
+    }}>
+      {children}
+    </HouseContext.Provider>
+  )
+}
 
 export default HouseContextProvider;

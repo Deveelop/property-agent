@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import HouseContextProvider from "@/components/HouseContext";
 
 
 
@@ -17,12 +18,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+        <HouseContextProvider>
       <body>
         <Navbar/>
         <main className=" max-w-[1440px] mx-auto -mt-12 bg-white">
         {children}
         </main>
         </body>
+        </HouseContextProvider>
     </html>
   );
 }
