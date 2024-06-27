@@ -14,7 +14,9 @@ type HouseContextType ={
     setProperties: React.Dispatch<React.SetStateAction<string[]>>
     price: string;
     setPrice: React.Dispatch<React.SetStateAction<string>>;
-    loading: boolean
+    loading: boolean;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+   
 }
 
 const defaultValue: HouseContextType={
@@ -29,7 +31,9 @@ const defaultValue: HouseContextType={
     setProperties: () => undefined,
     price: '',
     setPrice: () => undefined,
-    loading: false
+    loading: false,
+    setLoading: () => undefined,
+   
 }
 
 
@@ -37,6 +41,7 @@ export const HouseContext = createContext<HouseContextType | typeof defaultValue
 
 type HouseProps = {
     children: React.ReactNode;
+   
 }
 
 
@@ -49,6 +54,21 @@ const HouseContextProvider = ({children}: HouseProps) => {
     const [properties, setProperties] = useState<string[]>([]);
     const [price, setPrice] = useState('Price range (any)');
     const [loading, setLoading] = useState(false);
+   
+
+    useEffect(() => {
+      const allNigStates = houses.map((house) => {
+        return house.state
+      });
+
+     
+
+      const uniqueStates = ['Location (any)', ...Array.from(new Set(allNigStates))]
+
+      setNigStates(uniqueStates);
+
+    
+    }, [])
   return (
     <HouseContext.Provider value={{
         nigState,
@@ -63,6 +83,8 @@ const HouseContextProvider = ({children}: HouseProps) => {
         setPrice,
         houses,
         loading,
+        setLoading,
+     
         
 
     }}>
