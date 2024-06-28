@@ -20,6 +20,18 @@ import Apartment2Lg from '../public/house1.png';
 import Agent1 from '../public/house1.png';
 import Agent2 from '../public/house1.png';
 
+export const priceRange = [
+  {value: 'Price range (any)'},
+  {value: '80000 - 130000'},
+  {value: '150000 - 230000'},
+  {value: '300000 - 500000'},
+  {value: '60000 - 700000'},
+  {value: '800000 - 930000'},
+  {value: '1000000 - 1500000'},
+
+
+]
+
 
 export const housesData = [
     {
@@ -45,8 +57,8 @@ export const housesData = [
     },
     {
       id: 2,
-      type: 'House',
-      name: 'House 2',
+      type: 'Shop',
+      name: 'Shop 2',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illoat. Repudiandae ratione impedit delectus consectetur. Aspernaturvero obcaecati placeat ab distinctio unde ipsam molestias atqueratione delectus blanditiis nemo eius dignissimos doloremque quaealiquid maiores id tempore consequatur, quod pariatur saepe.',
       image: House2,
@@ -87,8 +99,8 @@ export const housesData = [
     },
     {
       id: 4,
-      type: 'House',
-      name: 'House 4',
+      type: 'Office',
+      name: 'Office 4',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illoat. Repudiandae ratione impedit delectus consectetur. Aspernaturvero obcaecati placeat ab distinctio unde ipsam molestias atqueratione delectus blanditiis nemo eius dignissimos doloremque quaealiquid maiores id tempore consequatur, quod pariatur saepe.',
       image: House1,
@@ -129,8 +141,8 @@ export const housesData = [
     },
     {
       id: 6,
-      type: 'House',
-      name: 'House 6',
+      type: 'Shop',
+      name: 'Shop 6',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illoat. Repudiandae ratione impedit delectus consectetur. Aspernaturvero obcaecati placeat ab distinctio unde ipsam molestias atqueratione delectus blanditiis nemo eius dignissimos doloremque quaealiquid maiores id tempore consequatur, quod pariatur saepe.',
       image: House2,
@@ -213,8 +225,8 @@ export const housesData = [
     },
     {
       id: 10,
-      type: 'House',
-      name: 'House 7',
+      type: 'Office',
+      name: 'Office 7',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illoat. Repudiandae ratione impedit delectus consectetur. Aspernaturvero obcaecati placeat ab distinctio unde ipsam molestias atqueratione delectus blanditiis nemo eius dignissimos doloremque quaealiquid maiores id tempore consequatur, quod pariatur saepe.',
       image: House2,
