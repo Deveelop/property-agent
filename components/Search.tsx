@@ -1,13 +1,15 @@
 'use client'
+import { useContext } from "react"
 import PriceRangeDropdown from "./PriceRangeDropdown"
 import PropertyDropdown from "./PropertyDropdown"
 import StateDropdown from "./StateDropdown"
 import Button from "./Button"
 import {RiSearch2Line} from 'react-icons/ri'
+import { HouseContext } from "./HouseContext"
+
 
 const Search = () => {
-
-
+  const {handleClick} = useContext(HouseContext)
   return (
     <section className="">
       <div className=" px-[30px] py-6 max-w-[1170px]  mx-auto flex flex-col lg:flex-row
@@ -16,7 +18,7 @@ const Search = () => {
       <StateDropdown/>
       <PropertyDropdown/>
       <PriceRangeDropdown/> 
-      <Button  icon={<RiSearch2Line/>} type="button" title="Search" variant="bg-orange-500 hover:bg-orange-600 transition w-full lg:max-w-[162px] h-16 text-white"/>
+      <Button onClick={handleClick}  icon={<RiSearch2Line/>} type="button" title="Search" variant="bg-orange-500 hover:bg-orange-600 transition w-full lg:max-w-[162px] h-16 text-white"/>
       </div>      
     </section>
   )

@@ -20,7 +20,7 @@ import Apartment2Lg from '../public/house1.png';
 import Agent1 from '../public/house1.png';
 import Agent2 from '../public/house1.png';
 
-export const priceRange = [
+export const priceRanges = [
   {value: 'Price range (any)'},
   {value: '80000 - 130000'},
   {value: '150000 - 230000'},
@@ -28,8 +28,13 @@ export const priceRange = [
   {value: '60000 - 700000'},
   {value: '800000 - 930000'},
   {value: '1000000 - 1500000'},
-
-
+  {value: '1000000 - 1500000'},
+  {value: '1000000 - 1500000'},
+  {value: '1000000 - 1500000'},
+  {value: '1000000 - 1500000'},
+  {value: '1000000 - 1500000'},
+  
+  
 ]
 
 

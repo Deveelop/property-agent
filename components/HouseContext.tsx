@@ -1,10 +1,10 @@
 'use client'
 import React, { useState, useEffect, createContext } from "react"
-import { housesData, priceRange } from "@/constants"
+import { housesData, priceRanges } from "@/constants"
 
 type HouseContextType ={
     houses: typeof housesData;
-    prices: typeof priceRange;
+    prices: typeof priceRanges;
     nigState: string;
     setNigState: React.Dispatch<React.SetStateAction<string>>;
     nigStates: string[];
@@ -13,18 +13,18 @@ type HouseContextType ={
     setProperty: React.Dispatch<React.SetStateAction<string>>;
     properties: string[];
     setProperties: React.Dispatch<React.SetStateAction<string[]>>
-    pricesRange: string[];
-    setPricesRange: React.Dispatch<React.SetStateAction<string[]>>
-    priceList: string;
-    setPriceList: React.Dispatch<React.SetStateAction<string>>
     loading: boolean;
     setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-   
+    price: string;
+    setPrice: React.Dispatch<React.SetStateAction<string>>;
+    priceLists: string[];
+    setPriceLists: React.Dispatch<React.SetStateAction<string[]>>
+    handleClick: () => void   
 }
 
 const defaultValue: HouseContextType={
     houses:  housesData,
-    prices: priceRange,
+    prices: priceRanges,
     nigState: '',
     setNigState: () => undefined,
     nigStates: [],
@@ -33,12 +33,13 @@ const defaultValue: HouseContextType={
     setProperty: () => undefined,
     properties: [],
     setProperties: () => undefined,
-    pricesRange: [],
-    setPricesRange: () => undefined,
-    priceList: '',
-    setPriceList: () => undefined,
     loading: false,
     setLoading: () => undefined,
+    price: '',
+    setPrice: () => undefined,
+    priceLists: [],
+    setPriceLists: () => undefined,
+    handleClick: () => undefined
    
 }
 
@@ -47,21 +48,20 @@ export const HouseContext = createContext<HouseContextType | typeof defaultValue
 
 type HouseProps = {
     children: React.ReactNode;
-   
 }
 
 
 
 const HouseContextProvider = ({children}: HouseProps) => {
     const [houses, setHouses] = useState(housesData);
-    const [prices,  setPrice] = useState(priceRange)
+    const [prices, setPrices] = useState(priceRanges);
     const [nigState, setNigState] = useState('Location (any)');
     const [nigStates, setNigStates] = useState<string[]>([]);
     const [property, setProperty] = useState('Property type (any)');
     const [properties, setProperties] = useState<string[]>([]);
-    const [priceList, setPriceList] = useState('Price range (any)');
-    const [pricesRange, setPricesRange] = useState<string[]>([]);
     const [loading, setLoading] = useState(false);
+    const [price, setPrice] = useState('Price range (any)')
+    const [priceLists, setPriceLists] = useState<string[]>([]);
 
    
 
@@ -74,21 +74,23 @@ const HouseContextProvider = ({children}: HouseProps) => {
        return house.type
      });
 
-     const allPriceRange = prices.map((price) => {
-      return price.value
+     const allPrices = prices.map((p) => {
+      return p.value;
      })
 
       const uniqueStates = ['Location (any)', ...Array.from(new Set(allNigStates))]
       const uniqueProperties = ['Property type (any)', ...Array.from(new Set(allProperties))]
-      const uniquePrices = ['Price range (any)', ...Array(new Set(allPriceRange))]
-
+      
       setNigStates(uniqueStates);
       setProperties(uniqueProperties);
-      setPricesRange(uniquePrices)
-     
+      setPriceLists(allPrices);
+    }, []);
 
-    
-    }, [])
+    const handleClick = () => {
+      console.log('clicked')
+    }
+
+
   return (
     <HouseContext.Provider value={{
         nigState,
@@ -100,13 +102,14 @@ const HouseContextProvider = ({children}: HouseProps) => {
         properties,
         setProperties,
         houses,
-        prices,
-        pricesRange,
-        priceList,
-        setPriceList,
-        setPricesRange,
         loading,
         setLoading,
+        price,
+        setPrice,
+        prices,
+        priceLists,
+        setPriceLists,
+        handleClick
      
         
 

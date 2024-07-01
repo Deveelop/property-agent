@@ -1,13 +1,12 @@
 import Hero from "@/components/Hero";
-import Search from "@/components/Search";
+import HouseList from "@/components/HouseList";
 
 
 export default function Home() {
   return (
  <>
- 
  <Hero/>
- 
+ <HouseList/>
  
  </>
   );
