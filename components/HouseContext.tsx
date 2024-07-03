@@ -87,7 +87,13 @@ const HouseContextProvider = ({children}: HouseProps) => {
     }, []);
 
     const handleClick = () => {
-      console.log('clicked')
+     
+
+      const isDedault = (str:string) => {
+        return str.split(' ').includes('(any)')
+      }
+
+      console.log(price.split(' '))
     }
 
 
@@ -110,9 +116,6 @@ const HouseContextProvider = ({children}: HouseProps) => {
         priceLists,
         setPriceLists,
         handleClick
-     
-        
-
     }}>
       {children}
     </HouseContext.Provider>
