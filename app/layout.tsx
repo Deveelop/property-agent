@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import HouseContextProvider from "@/components/HouseContext";
+import Footer from "@/components/Footer";
 
 
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         <main className=" max-w-[1440px] mx-auto -mt-12 bg-white">
         {children}
         </main>
+        <Footer/>
         </body>
         </HouseContextProvider>
     </html>

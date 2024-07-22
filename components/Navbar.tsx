@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav className="py-6 mb-12 border-b bg-white">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/">
-        <Image src='/' alt="logo" width={24} height={24}/>
+        <Image src='/logo.png' alt="logo" width={100} height={100}/>
         </Link>
         <div className=" flex items-center gap-6">
             <Link className=" hover:text-orange-500 transition" href='/login'>Log in</Link>
